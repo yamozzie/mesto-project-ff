@@ -1,7 +1,6 @@
-const page = document.querySelector('.page');
-const content = document.querySelector('.content');
 const placesList = document.querySelector('.places__list');
 const cardTemplate = document.querySelector('#card-template').content;
+
 function createCards(name, link) {
     const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
     const deleteCardButton = cardElement.querySelector('.places__item .card__delete-button');
