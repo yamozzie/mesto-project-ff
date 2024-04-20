@@ -29,7 +29,7 @@ initialCards.forEach(renderCard);
 
 // Функция рендера карточек
 function renderCard(item) {
-    const cardElement = createCard(item, {deleteCard}, {likeCard}, {handleImageClick});
+    const cardElement = createCard(item, {deleteCard}, {likeCard}, {handleImageClick}, popupImage);
     placesList.append(cardElement);
 };
 
@@ -67,11 +67,8 @@ editProfileButton.addEventListener('click', () => {
 profileAddButton.addEventListener('click', () => {openPopup(popupNewCard)});
 
 popupCloseButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        allPopups.forEach(popup => {
-            closePopup(popup)
-        });
-    });
+    const popup = button.closest('.popup');
+    button.addEventListener('click', () => closePopup(popup))
 });
 
 // Функция закрытия попаов по клику оверлея

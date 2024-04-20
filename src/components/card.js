@@ -1,7 +1,5 @@
-import { popupImage } from "../index.js";
-
 // Функция создания карточек
-function createCard(item, {deleteCard}, {likeCard}, {handleImageClick}) {
+function createCard(item, {deleteCard}, {likeCard}, {handleImageClick}, popupImage) {
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
     const deleteCardButton = cardElement.querySelector('.card__delete-button');
