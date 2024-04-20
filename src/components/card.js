@@ -1,11 +1,4 @@
-import { placesList, popupImage, modalImg } from "../index.js";
-import { openPopup } from "./modal.js";
-
-// Функция рендера карточек
-function renderCard(item) {
-    const cardElement = createCard(item, {deleteCard}, {likeCard}, {handleImageClick});
-    placesList.append(cardElement);
-}
+import { popupImage } from "../index.js";
 
 // Функция создания карточек
 function createCard(item, {deleteCard}, {likeCard}, {handleImageClick}) {
@@ -34,12 +27,4 @@ function likeCard(likeCardButton) {
     likeCardButton.classList.toggle('card__like-button_is-active');
 }
 
-// Функция клика на изображения
-function handleImageClick(item, popupImage) {
-    modalImg.src = item.link;
-    modalImg.alt = item.name;
-    popupImage.querySelector('.popup__caption').textContent = item.name;
-
-    openPopup(popupImage);
-}
-export { renderCard, createCard, deleteCard, likeCard, handleImageClick};
+export { createCard, deleteCard, likeCard };
