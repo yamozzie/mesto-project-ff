@@ -100,7 +100,6 @@ function createNewCard(evt) {
         closePopup(popupNewCard);
         const cardElement = createCard(data, {handleImageClick}, data.owner._id);
         placesList.prepend(cardElement);
-        console.log(data)
     })
     .catch((err) => {
         console.log(err);
