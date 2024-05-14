@@ -80,7 +80,6 @@ function handleFormEditSubmit(evt) {
     })
     .catch((err) => {
         console.log(err)
-        popupEditSubmit.textContent = 'Сохранить';
     })
     .finally(() => {
         popupEditSubmit.textContent = 'Сохранить';
@@ -103,7 +102,6 @@ function createNewCard(evt) {
     })
     .catch((err) => {
         console.log(err);
-        popupNewCardSubmit.textContent = 'Сохранить';
     })
     .finally(() => {
         popupNewCardSubmit.textContent = 'Сохранить';
@@ -125,7 +123,6 @@ const replaceAvatar = (evt) => {
     })
     .catch((err) => {
         console.log(err);
-        popupAvatarSubmit.textContent = 'Сохранить';
     })
     .finally(() => {
         popupAvatarSubmit.textContent = 'Сохранить';

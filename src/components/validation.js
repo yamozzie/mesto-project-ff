@@ -16,7 +16,6 @@ const showInputError = (formElement, inputElement, validationConfig, errorMessag
 	const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 	inputElement.classList.add(validationConfig.inputErrorClass);
 	errorElement.classList.add(validationConfig.errorClass);
-	formElement.querySelector(validationConfig.inputSelector).style.borderBottom = "1px solid #FF0000"
 	errorElement.textContent = errorMessage;
 }
 
@@ -24,7 +23,6 @@ const hideInputError = (formElement, inputElement, validationConfig) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 	inputElement.classList.remove(validationConfig.inputErrorClass);
 	errorElement.classList.remove(validationConfig.errorClass);
-	formElement.querySelector(validationConfig.inputSelector).style.borderBottom = null
 	errorElement.textContent = "";
 }
 
@@ -54,14 +52,12 @@ const enableValidation = (validationConfig) => {
 }
 
 const clearValidation = (formElement, validationConfig) => {
-	const popupButton = formElement.querySelector(validationConfig.submitButtonSelector)
-	popupButton.classList.add(validationConfig.inactiveButtonClass)
+	const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+	const popupButton = formElement.querySelector(validationConfig.submitButtonSelector);
+	toggleButtonState(inputList, popupButton, validationConfig.inactiveButtonClass)
 	const spanError = Array.from(formElement.querySelectorAll(validationConfig.inputSelector))
 	spanError.forEach((item) => {
-        hideInputError(formElement, item, validationConfig)
-	})
-	const inputError = Array.from(formElement.querySelectorAll(validationConfig.inputSelector))
-	inputError.forEach((item) => {
+        hideInputError(formElement, item, validationConfig);
 		item.classList.remove(validationConfig.inputErrorClass)
 	})
 }
@@ -75,6 +71,6 @@ const setEventListeners = (formElement, validationConfig) => {
             toggleButtonState(inputList, buttonElement, validationConfig);
         });
     });
-}
+};
 
 export { enableValidation, clearValidation }

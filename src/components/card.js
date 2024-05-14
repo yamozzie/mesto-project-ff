@@ -8,24 +8,16 @@ function createCard(item, {handleImageClick}, userId) {
     const likeCardButton = cardElement.querySelector('.card__like-button');
     const cardLikeAmount = cardElement.querySelector('.card__like_amount');
     const cardImage = cardElement.querySelector('.card__image');
-    const cardData = {
-        name: item.name,
-        link: item.link,
-        id: item.owner._id,
-        likes: item.likes.length,
-        cardId: item._id
-    }
-
-    cardImage.src = cardData.link;
-    cardImage.alt = cardData.name;
-    cardElement.querySelector('.card__title').textContent = cardData.name;
-
+    cardImage.src = item.link;
+    cardImage.alt = item.name;
+    cardElement.querySelector('.card__title').textContent = item.name;
+    console.log(item.likes)
     if (item.owner._id !== userId) {
         deleteCardButton.style.display = 'none';
     }
 
     deleteCardButton.addEventListener('click', () => {
-        deleteCardApi(cardData.cardId)
+        deleteCardApi(item._id)
         .then(() => {
             cardElement.remove()
         })
@@ -33,22 +25,22 @@ function createCard(item, {handleImageClick}, userId) {
     })
     likeCardButton.addEventListener('click', () => {
         if (likeCardButton.classList.contains('card__like-button_is-active')) {
-        dislikeCardApi(cardData.cardId)
+        dislikeCardApi(item._id)
         .then(() => {
             likeCardButton.classList.toggle('card__like-button_is-active');
-            cardLikeAmount.textContent = cardData.likes;
+            cardLikeAmount.textContent = item.likes.length;
         })
         } else {
-            likeCardApi(cardData.cardId)
+            likeCardApi(item._id)
             .then(() => {
                 likeCardButton.classList.toggle('card__like-button_is-active');
-                cardLikeAmount.textContent = cardData.likes;
+                cardLikeAmount.textContent = item.likes.length + 1;
             })
             .catch(err => console.log(err))
         }
     });
-    cardImage.addEventListener('click', () => {handleImageClick(cardData)});
-    cardLikeAmount.textContent = cardData.likes
+    cardImage.addEventListener('click', () => {handleImageClick(item)});
+    cardLikeAmount.textContent = item.likes.length
     return cardElement;
 
 }
