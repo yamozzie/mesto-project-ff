@@ -6,9 +6,9 @@ const handleRes = (res) => {
 }
 
 const config = {
-    baseUrl: 'https://nomoreparties.co/v1/wff-cohort-12',
+    baseUrl: 'https://nomoreparties.co/v1/wff-cohort-14',
     headers: {
-      authorization: '9702ad57-d331-4ea7-bb56-285f4950731d',
+      authorization: 'e882a1bb-dbfc-4522-b533-1d9a93d919ba',
       'Content-Type': 'application/json'
     }
 }
