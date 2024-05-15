@@ -11,7 +11,6 @@ function createCard(item, {handleImageClick}, userId) {
     cardImage.src = item.link;
     cardImage.alt = item.name;
     cardElement.querySelector('.card__title').textContent = item.name;
-    console.log(item.likes)
     if (item.owner._id !== userId) {
         deleteCardButton.style.display = 'none';
     }
@@ -45,14 +44,4 @@ function createCard(item, {handleImageClick}, userId) {
 
 }
 
-// Функция удаления карточки
-function deleteCard(cardElement) {
-    cardElement.remove(); 
-}
-// Функция лайка карточки
-function likeCard(likeCardButton) {
-    likeCardButton.classList.toggle('card__like-button_is-active');
-}
-
-
-export { createCard, deleteCard, likeCard };
+export { createCard };

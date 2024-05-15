@@ -1,8 +1,8 @@
 import './pages/index.css';
-import { createCard, deleteCard, likeCard } from './components/card';
+import { createCard, } from './components/card';
 import { openPopup, closePopup } from './components/modal'
 import { enableValidation, clearValidation } from "./components/validation";
-import { getUserData, getCardsData, patchUserData, patchNewCard, likeCardApi, dislikeCardApi, patchUserAvatar } from "./components/api";
+import { getUserData, getCardsData, patchUserData, patchNewCard, patchUserAvatar } from "./components/api";
 
 const validationConfig = {
     formSelector: '.popup__form',
@@ -96,7 +96,6 @@ function createNewCard(evt) {
 
     patchNewCard(cardName, cardLink)
     .then((data) => {
-        closePopup(popupNewCard);
         const cardElement = createCard(data, {handleImageClick}, data.owner._id);
         placesList.prepend(cardElement);
     })
@@ -105,6 +104,7 @@ function createNewCard(evt) {
     })
     .finally(() => {
         popupNewCardSubmit.textContent = 'Сохранить';
+        closePopup(popupNewCard);
     })
 
     addCardForm.reset();

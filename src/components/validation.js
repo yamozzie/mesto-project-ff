@@ -54,11 +54,9 @@ const enableValidation = (validationConfig) => {
 const clearValidation = (formElement, validationConfig) => {
 	const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
 	const popupButton = formElement.querySelector(validationConfig.submitButtonSelector);
-	toggleButtonState(inputList, popupButton, validationConfig.inactiveButtonClass)
-	const spanError = Array.from(formElement.querySelectorAll(validationConfig.inputSelector))
-	spanError.forEach((item) => {
+	toggleButtonState(inputList, popupButton, validationConfig)
+	inputList.forEach((item) => {
         hideInputError(formElement, item, validationConfig);
-		item.classList.remove(validationConfig.inputErrorClass)
 	})
 }
 
